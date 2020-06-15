@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  numero1:Number;
-  
   constructor() { }
 
   ngOnInit(): void {
