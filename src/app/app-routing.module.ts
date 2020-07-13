@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserCreateComponent } from './user-view/user-create/user-create.component';
 import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
@@ -12,6 +11,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user-view/user-view.module').then(m => m.UserViewModule)
   }
 ];
 @NgModule({
