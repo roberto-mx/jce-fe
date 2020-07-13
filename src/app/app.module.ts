@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserViewModule } from './user-view/user-view.module';
 import { LayoutModule } from './layout/layout.module';
+import { ApiModule, Configuration} from 'backend-api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,13 @@ import { LayoutModule } from './layout/layout.module';
     BrowserModule,
     AppRoutingModule,
     UserViewModule,
-    LayoutModule
+    LayoutModule,
+	HttpClientModule,
+	ApiModule.forRoot(() => {
+      return new Configuration({
+        basePath: `http://127.0.0.1:4010`,
+      });
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

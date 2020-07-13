@@ -14,7 +14,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "backend-api": [
+        "dist/backend-api/backend-api",
+        "dist/backend-api"
+      ],
+      "foo-swagger-client": [
+        "dist/foo-swagger-client/foo-swagger-client",
+        "dist/foo-swagger-client"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
