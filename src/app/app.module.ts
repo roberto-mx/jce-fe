@@ -7,6 +7,8 @@ import { UserViewModule } from './user-view/user-view.module';
 import { LayoutModule } from './layout/layout.module';
 import { ApiModule, Configuration} from 'backend-api';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+	BrowserAnimationsModule,
     AppRoutingModule,
     UserViewModule,
     LayoutModule,
@@ -23,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
         basePath: `http://127.0.0.1:4010`,
       });
     }),
+	BrowserAnimationsModule,
+	FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
