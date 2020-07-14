@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "backend-api";
 import { DefaultService } from 'backend-api';
-import { HttpClient } from '@angular/common/http';
-import {CompletionObserver, Observable, PartialObserver} from "rxjs"
 
 @Component({
   selector: 'app-catalog',
@@ -13,7 +11,7 @@ export class CatalogComponent implements OnInit {
 	
   user: User;
 
-  constructor(private http:HttpClient, private _defaultService: DefaultService) { }
+  constructor(private _defaultService: DefaultService) { }
 
   ngOnInit(): void {
 	
