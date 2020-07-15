@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<head>
+    <style>
+        h1 {color: #0f5070; text-align: center;}
+    </style>
+</head>
+
+<h1>{{title}}</h1>
+<div class="container p-1 my-3 marco"><br>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-sucess" *ngFor="let service of servicios; let i=index">                        
+            <h3>{{i + 1}} - {{service.nom}}</h3><br>
+            <div class="w3-display-container">
+                <div class="w3-third">
+                    <div class="w3-card">
+                      <img src="{{service.imagepath}}" style="width:100%" >
+                      <div class="w3-container">
+                        <h4>{{service.categ}}</h4>
+                      </div>
+                    </div>
+                  </div>                
+            </div>
+        </li>
+    </ul>
+</div>

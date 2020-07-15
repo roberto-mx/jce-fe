@@ -6,11 +6,12 @@ import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { RouterModule } from '@angular/router';
+import { SelectServiceComponent } from './select-service/select-service.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, ContentComponent],
+  declarations: [HeaderComponent, FooterComponent, ContentComponent, SelectServiceComponent],
   imports: [
     CommonModule,
     RouterModule
