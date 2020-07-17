@@ -8,7 +8,7 @@ import { DefaultService } from './api/default.service';
 @NgModule({
   imports:      [],
   declarations: [],
-  exports:      [User, DefaultService],
+  exports:      [],
   providers: [
     DefaultService ]
 })

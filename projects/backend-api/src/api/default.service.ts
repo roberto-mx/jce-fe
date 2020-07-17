@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Category } from '../model/category';
 import { User } from '../model/user';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -56,7 +57,219 @@ export class DefaultService {
 
 
     /**
-     *
+     * 
+     * borra una categoria definida por el ID
+     * @param categoryIdIn codigo de la categoria
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public catalogCategoryIdInDelete(categoryIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (categoryIdIn === null || categoryIdIn === undefined) {
+            throw new Error('Required parameter categoryIdIn was null or undefined when calling catalogCategoryIdInDelete.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<string>('delete',`${this.basePath}/Catalog/${encodeURIComponent(String(categoryIdIn))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * muestra una categoria definida por el ID
+     * @param categoryIdIn codigo de la categoria
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<Category>;
+    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
+    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
+    public catalogCategoryIdInGet(categoryIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (categoryIdIn === null || categoryIdIn === undefined) {
+            throw new Error('Required parameter categoryIdIn was null or undefined when calling catalogCategoryIdInGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Category>('get',`${this.basePath}/Catalog/${encodeURIComponent(String(categoryIdIn))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * muestra todas las categorias en el catalogo de servicios
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public catalogGet(observe?: 'body', reportProgress?: boolean): Observable<Category>;
+    public catalogGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
+    public catalogGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
+    public catalogGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Category>('get',`${this.basePath}/Catalog`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * crea una categoria con el objeto recibido
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public catalogPost(body: Category, observe?: 'body', reportProgress?: boolean): Observable<Category>;
+    public catalogPost(body: Category, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
+    public catalogPost(body: Category, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
+    public catalogPost(body: Category, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling catalogPost.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<Category>('post',`${this.basePath}/Catalog`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * actualiza una categoria con el objeto recibido
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public catalogPut(body: Category, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public catalogPut(body: Category, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public catalogPut(body: Category, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public catalogPut(body: Category, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling catalogPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<string>('put',`${this.basePath}/Catalog`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
      * muestar toodos los usuarios
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -92,9 +305,9 @@ export class DefaultService {
     }
 
     /**
-     *
+     * 
      * crea un usuario
-     * @param body
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -139,7 +352,7 @@ export class DefaultService {
     }
 
     /**
-     *
+     * 
      * muestre un Usuario definido por el ID
      * @param uniqueIdentifier codigo del usuario
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
