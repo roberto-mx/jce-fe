@@ -1,0 +1,445 @@
+openapi: 3.0.0
+info:
+  title: Jalisco con empleo API
+  description: Aplicacion creada para conectar proovedores con clientes en Jalisco
+  termsOfService: http://www.jaliscoconempleo.com/ToS
+  contact:
+    name: Amdocs
+    url: "http://www.amdocs.com"
+    email: soporte@amdocs.com
+  license:
+    name: Apache 2.0
+    url: http://apache.com
+  version: 1.0.0
+
+servers:
+  - url: http://127.0.0.1:4010
+    description: Prod Server
+  - url: http://127.0.0.1:4010
+    description: Development server
+
+paths:
+  /Catalog:
+    get:
+      description: muestra todas las categorias en el catalogo de servicios
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+    
+    post:
+      description: crea una categoria con el objeto recibido
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+                
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+    
+    put:
+      description: actualiza una categoria con el objeto recibido
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+                
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: {"message": "successfully updated"}
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+    
+  
+  /Catalog/{categoryIdIn}:
+    get:
+      description: muestra una categoria definida por el ID
+      parameters:
+        - in: path
+          name: categoryIdIn
+          required: true
+          description: codigo de la categoria
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+    
+    delete:
+      description: borra una categoria definida por el ID
+      parameters:
+        - in: path
+          name: categoryIdIn
+          required: true
+          description: codigo de la categoria
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                type: string
+                example: {"message": "successfully deleted"}
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+    
+
+
+  /User:
+    get:
+      description: muestar toodos los usuarios
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+    post:
+      description: crea un usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: {"message":"successfully created"}
+
+  /User/{UniqueIdentifier}:
+    get:
+      description: muestre un Usuario definido por el ID
+      parameters:
+        - in: path
+          name: UniqueIdentifier
+          required: true
+          description: codigo del usuario
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+components:
+
+  responses:
+  
+    notFound:
+      description: User not found
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "Error 404, page not found."}
+    badRequest:
+      description: BAD_REQUEST
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "BAD_REQUEST"}
+    unauthorized:
+      description: UNAUTHORIZED
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "Unauthorized"}
+    internalServerError:
+      description: INTERNAL_SERVER_ERROR
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "unexpected error"}
+    
+  schemas:
+  
+    category: 
+      type: object
+      properties:
+        categoryId:
+          type: integer
+          example: 1001
+          description: a
+        name:
+          type: string
+          example: Oficios Generales
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        description:
+          type: string
+          example: General Official
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+        empleoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/empleo'
+          description: a
+      required:
+        - categoryId
+        - name
+        - version
+        - description
+        - imageurl
+        - empleoList
+        
+    empleo: 
+      type: object
+      properties:
+        empleoId:
+          type: integer
+          example: 2001
+          description: a
+        empleo2category:
+          type: integer
+          example: 1001
+          description: a
+        name:
+          type: string
+          example: Carpinteros
+          description: a
+        description:
+          type: string
+          example: Carpenter
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+        skillList:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills'
+          description: a
+      required:
+        - empleoId
+        - empleo2category
+        - name
+        - description
+        - version
+        - imageurl
+        - skillList
+
+
+    skills: 
+      type: object
+      properties:
+        skillId:
+          type: integer
+          example: 3001
+          description: a
+        skill2empleo:
+          type: integer
+          example: 2001
+          description: a
+        name:
+          type: string
+          example: Diversos
+          description: a
+        description:
+          type: string
+          example: Miscellaneous
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+
+      required:
+        - skillId
+        - skill2empleo
+        - name
+        - description
+        - version
+        - imageurl
+
+
+  
+    user:
+      type: object
+      properties:
+        FirstName:
+          type: string
+          example: Luis
+          description: First Name of the User
+        LastName:
+          type: string
+          example: Briseno
+          description: Last Name of the User
+        MiddleName:
+          type: string
+          example: Guillermo
+          description: Middle Name of the User
+        UserType:
+          type: string
+          example: Requester-Provider
+          description: Requester/Provider
+        PhoneNumber:
+          type: string
+          example: 3333333333
+          description: 10 digit Phone Number of the user
+        CountryCode:
+          type: string
+          example: +52
+          description: CountryCode of the user, Default Value +52
+        Address:
+          type: object
+          $ref: '#/components/schemas/address'
+          description: Mandatory for UserType:-Requester
+      required:
+        - FirstName
+        - LastName
+        - UserType
+        - PhoneNumber
+
+    address:
+      type: object
+      properties:
+        AddressLine1:
+          type: string
+          example: Luis
+          description: Suite/Apartment, Outer Number, Street
+        Colony:
+          type: string
+          example: 7, 1234 , calle esperanza
+          description: Colony or Neighborhood
+        Muncipality:
+          type: string
+          example: La Estancia
+          description: Muncipality
+        Zipcode:
+          type: string
+          example: 12345
+          description: Zipcode
+        State:
+          type: string
+          example: Jalisco
+          description: State
+      required:
+        - AddressLine1
+        - Colony
+        - Muncipality
+        - Zipcode
+        - State
+
