@@ -2,7 +2,6 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home/home.component';
-import { SubcategoriesComponent } from './subcategories/subcategories/subcategories.component';
 
 const routes: Routes = [
   {
@@ -17,7 +16,10 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user-view/user-view.module').then(m => m.UserViewModule)
   },
-    {path : 'subcategories', component: SubcategoriesComponent}
+  /*{
+	path : 'subcategories',
+	loadChildren: () => import('./subcategories/subcategories.module').then(m => m.SubcategoriesModule)
+  }*/
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogComponent } from './catalog.component';
+import { SubcategoriesModule } from '../subcategories/subcategories.module';
 
 import { UiImportsModule } from '../ui-imports/ui-imports.module';
 
@@ -11,7 +12,8 @@ import { UiImportsModule } from '../ui-imports/ui-imports.module';
   imports: [
     CommonModule,
     CatalogRoutingModule,
-	UiImportsModule
+	UiImportsModule,
+	SubcategoriesModule
   ]
 })
 export class CatalogModule { }

@@ -14,7 +14,6 @@ export class CatalogComponent implements OnInit {
   categories: Category;
 
   constructor(private _defaultService: DefaultService) { }
-  constructor(){}
 
   ngOnInit(): void {
 	
