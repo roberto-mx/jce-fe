@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user-view/user-view.module').then(m => m.UserViewModule)
-  }
+  },
+  {
+    path: 'serviceDetails',
+    loadChildren: () => import('./service-details/service-details.module').then(m => m.ServiceDetailsModule)
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

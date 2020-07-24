@@ -1,0 +1,33 @@
+
+/*
+//added to style.css
+div.serviceComponent {
+  background-color: #154360;
+  font-family: "Century Gothic";
+}
+*/
+.headerText{
+  text-align: center;
+  color: azure;
+}
+
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.example-card {
+  max-width: 90%;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+mat-card  {
+  padding: 10px;
+  border-radius: 25px;
+}
