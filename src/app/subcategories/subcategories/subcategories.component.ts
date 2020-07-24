@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DefaultService } from 'backend-api';
+import { Category } from 'backend-api';
+
 
 @Component({
   selector: 'app-subcategories',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubcategoriesComponent implements OnInit {
 
-  constructor() { }
+  categories: Category;
+
+  constructor(private _defaultService: DefaultService) { }
 
   ngOnInit(): void {
+
+    this._defaultService.catalogGet().subscribe( data  => {
+      this.categories = data;
+      console.log(this.categories);
+    });
   }
+
+  
+
 
 }
