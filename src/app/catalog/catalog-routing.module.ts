@@ -3,7 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CatalogComponent } from './catalog.component';
 
-const routes: Routes = [{ path: '', component: CatalogComponent }];
+const routes: Routes = [
+	{ 
+		path: '', 
+		component: CatalogComponent 
+	}
+];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

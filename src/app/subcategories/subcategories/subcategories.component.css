@@ -1,0 +1,42 @@
+  .titulo {
+      margin: 15px;
+      font-size: 30px;
+  }
+  
+  .subtitulo {
+      margin-left: 15px;
+      font-size: 20px;
+  }
+  
+  .contenedor {
+      background-color: whitesmoke;
+      margin: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+  
+  .card-title {
+      font-size: calc(1em + 1vw);
+  }
+  
+  .card-text {
+      color: gray;
+      font-size: calc(0.7em + 0.7vw);
+  }
+  
+  .example-card {
+      width: 20%;
+      margin: 10px;
+      border-radius: 20px;
+      background-color: whitesmoke;
+      border: none;
+  }
+  
+  .mat-card-image {
+      background-size: cover;
+      border-radius: 20px;
+      height: 400px;
+      max-height: 400px;
+  }
