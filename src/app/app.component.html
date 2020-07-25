@@ -5,7 +5,7 @@
       <mat-icon class="icon">input</mat-icon>
       <span class="label">Login</span>
     </a>
-    <a mat-list-item>
+    <a mat-list-item routerLink="/" routerLinkActive="active">
       <mat-icon class="icon">home</mat-icon>
         <span class="label">Home</span>
     </a>
@@ -13,6 +13,14 @@
       <mat-icon class="icon">account_circle</mat-icon>
       <span class="label">Profile</span>
     </a>
+     <a mat-list-item routerLink="/catalog" routerLinkActive="active">
+       <mat-icon class="icon">account_circle</mat-icon>
+       <span class="label">Catálogo</span>
+     </a>
+     <a mat-list-item routerLink="/serviceDetails" routerLinkActive="active">
+       <mat-icon class="icon">account_circle</mat-icon>
+       <span class="label">Servicio</span>
+     </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
