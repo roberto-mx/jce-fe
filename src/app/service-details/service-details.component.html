@@ -1,19 +1,20 @@
 <div class = "serviceComponent" >
   <h2 ><span class="centered ; headerText" >Detalles del Servicio </span></h2>
   <mat-card class="example-card centered" >
+    <img class="avatarImage " style=" " src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" >
     <mat-card-header >
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title  >{{name}}</mat-card-title>
-      <mat-card-subtitle>{{profesion}}</mat-card-subtitle>
+      <!-- div mat-card-avatar class="example-header-image" >< / div -->
     </mat-card-header>
-    <! --img class="centered" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" -->
+    <!-- img class="centered" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" -->
     <mat-card-content>
-      <span class="centered">*****</span><br/>
+      <mat-card-title  >{{nombre}}</mat-card-title>
+      <mat-card-subtitle>{{profesion}}</mat-card-subtitle>
+      <span class="centered" >{{estrellas}}</span><br/>
       <span class ="centered">Service Id : {{serviceID}}</span><br/>
       <mat-card-actions>
         <div class="centered">
-          <button mat-stroked-button>Cancelar Servicio</button>
-          <button mat-stroked-button>Calificar Servicio</button>
+          <button mat-stroked-button (click)="cancelarServicio($event)" >Cancelar Servicio</button>
+          <button mat-stroked-button (click)="calificarServicio($event)"  >Calificar Servicio</button>
         </div>
       </mat-card-actions>
     </mat-card-content>
@@ -25,7 +26,7 @@
       <h4 class="centered" style="text-align: center" >Información del servicio</h4>
     </mat-card-header>
       <mat-card-content>
-      <span class="centered">Fecha de solicitud: {{fechaSolicitud}}</span><br/>
+      <span class="centered">Fecha de solicitud: {{fechaSolicitud | date:'shortDate' }}</span><br/>
       <span class="centered">Servicio: {{servicio}}</span><br/>
       <span class="centered" >Sub-Servicio: {{subServicio}}</span><br/>
     </mat-card-content>

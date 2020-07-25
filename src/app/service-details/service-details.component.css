@@ -6,9 +6,34 @@ div.serviceComponent {
   font-family: "Century Gothic";
 }
 */
+
+/* PERSONALIZACION DE LA Angular Material*/
+mat-card-header-text {
+  width: 90%;
+}
+
+.mat-card-title{
+  text-align: center;
+}
+
+.mat-card-subtitle{
+  text-align: center;
+}
+/* END */
+
+
 .headerText{
   text-align: center;
   color: azure;
+}
+
+.avatarImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  /*padding: 10px;*/
+  border-radius: 25px;
 }
 
 .centered {
@@ -16,10 +41,11 @@ div.serviceComponent {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
+  text-align: center;
 }
 
 .example-card {
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .example-header-image {
