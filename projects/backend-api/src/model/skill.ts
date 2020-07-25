@@ -10,15 +10,11 @@
  * Do not edit the class manually.
  */
 
-export interface Skills { 
+export interface Skill { 
     /**
      * a
      */
     skillId: number;
-    /**
-     * a
-     */
-    skill2empleo: number;
     /**
      * a
      */

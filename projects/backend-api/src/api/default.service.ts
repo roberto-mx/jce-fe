@@ -17,7 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Category } from '../model/category';
+import { Categoria } from '../model/categoria';
+import { Empleo } from '../model/empleo';
+import { Skill } from '../model/skill';
 import { User } from '../model/user';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -58,59 +60,18 @@ export class DefaultService {
 
     /**
      * 
-     * borra una categoria definida por el ID
-     * @param categoryIdIn codigo de la categoria
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public catalogCategoryIdInDelete(categoryIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public catalogCategoryIdInDelete(categoryIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (categoryIdIn === null || categoryIdIn === undefined) {
-            throw new Error('Required parameter categoryIdIn was null or undefined when calling catalogCategoryIdInDelete.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<string>('delete',`${this.basePath}/Catalog/${encodeURIComponent(String(categoryIdIn))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
      * muestra una categoria definida por el ID
      * @param categoryIdIn codigo de la categoria
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<Category>;
-    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
-    public catalogCategoryIdInGet(categoryIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
-    public catalogCategoryIdInGet(categoryIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public categoriaCategoryIdInGet(categoryIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<Categoria>;
+    public categoriaCategoryIdInGet(categoryIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Categoria>>;
+    public categoriaCategoryIdInGet(categoryIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Categoria>>;
+    public categoriaCategoryIdInGet(categoryIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (categoryIdIn === null || categoryIdIn === undefined) {
-            throw new Error('Required parameter categoryIdIn was null or undefined when calling catalogCategoryIdInGet.');
+            throw new Error('Required parameter categoryIdIn was null or undefined when calling categoriaCategoryIdInGet.');
         }
 
         let headers = this.defaultHeaders;
@@ -128,7 +89,7 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Category>('get',`${this.basePath}/Catalog/${encodeURIComponent(String(categoryIdIn))}`,
+        return this.httpClient.request<Categoria>('get',`${this.basePath}/Categoria/${encodeURIComponent(String(categoryIdIn))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -144,10 +105,10 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public catalogGet(observe?: 'body', reportProgress?: boolean): Observable<Category>;
-    public catalogGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
-    public catalogGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
-    public catalogGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public categoriaGet(observe?: 'body', reportProgress?: boolean): Observable<Categoria>;
+    public categoriaGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Categoria>>;
+    public categoriaGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Categoria>>;
+    public categoriaGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -164,7 +125,7 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Category>('get',`${this.basePath}/Catalog`,
+        return this.httpClient.request<Categoria>('get',`${this.basePath}/Categoria`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -176,18 +137,18 @@ export class DefaultService {
 
     /**
      * 
-     * crea una categoria con el objeto recibido
-     * @param body 
+     * muestra un empleo definido por el ID
+     * @param empleoIdIn codigo del empleo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public catalogPost(body: Category, observe?: 'body', reportProgress?: boolean): Observable<Category>;
-    public catalogPost(body: Category, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Category>>;
-    public catalogPost(body: Category, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Category>>;
-    public catalogPost(body: Category, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public empleoEmpleoIdInGet(empleoIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<Empleo>;
+    public empleoEmpleoIdInGet(empleoIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Empleo>>;
+    public empleoEmpleoIdInGet(empleoIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Empleo>>;
+    public empleoEmpleoIdInGet(empleoIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling catalogPost.');
+        if (empleoIdIn === null || empleoIdIn === undefined) {
+            throw new Error('Required parameter empleoIdIn was null or undefined when calling empleoEmpleoIdInGet.');
         }
 
         let headers = this.defaultHeaders;
@@ -203,16 +164,10 @@ export class DefaultService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
 
-        return this.httpClient.request<Category>('post',`${this.basePath}/Catalog`,
+        return this.httpClient.request<Empleo>('get',`${this.basePath}/Empleo/${encodeURIComponent(String(empleoIdIn))}`,
             {
-                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -223,18 +178,90 @@ export class DefaultService {
 
     /**
      * 
-     * actualiza una categoria con el objeto recibido
-     * @param body 
+     * muestra todos los Empleos
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public catalogPut(body: Category, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public catalogPut(body: Category, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public catalogPut(body: Category, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public catalogPut(body: Category, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public empleoGet(observe?: 'body', reportProgress?: boolean): Observable<Empleo>;
+    public empleoGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Empleo>>;
+    public empleoGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Empleo>>;
+    public empleoGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling catalogPut.');
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Empleo>('get',`${this.basePath}/Empleo`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * muestra todos los skills
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public skillGet(observe?: 'body', reportProgress?: boolean): Observable<Skill>;
+    public skillGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Skill>>;
+    public skillGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Skill>>;
+    public skillGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Skill>('get',`${this.basePath}/Skill`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * muestra un Skill definido por el ID
+     * @param skillIdIn codigo del Skill
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public skillSkillIdInGet(skillIdIn: number, observe?: 'body', reportProgress?: boolean): Observable<Skill>;
+    public skillSkillIdInGet(skillIdIn: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Skill>>;
+    public skillSkillIdInGet(skillIdIn: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Skill>>;
+    public skillSkillIdInGet(skillIdIn: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (skillIdIn === null || skillIdIn === undefined) {
+            throw new Error('Required parameter skillIdIn was null or undefined when calling skillSkillIdInGet.');
         }
 
         let headers = this.defaultHeaders;
@@ -250,16 +277,10 @@ export class DefaultService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
 
-        return this.httpClient.request<string>('put',`${this.basePath}/Catalog`,
+        return this.httpClient.request<Skill>('get',`${this.basePath}/Skill/${encodeURIComponent(String(skillIdIn))}`,
             {
-                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

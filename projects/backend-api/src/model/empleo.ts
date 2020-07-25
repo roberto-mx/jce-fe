@@ -9,17 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Skills } from './skills';
 
 export interface Empleo { 
     /**
      * a
      */
     empleoId: number;
-    /**
-     * a
-     */
-    empleo2category: number;
     /**
      * a
      */
@@ -36,8 +31,4 @@ export interface Empleo {
      * a
      */
     imageurl: string;
-    /**
-     * a
-     */
-    skillList: Array<Skills>;
 }
