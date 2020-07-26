@@ -19,7 +19,7 @@ servers:
     description: Development server
 
 paths:
-  /Catalog:
+  /Categoria:
     get:
       description: muestra todas las categorias en el catalogo de servicios
       responses:
@@ -28,7 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/category'
+                $ref: '#/components/schemas/categoria'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -41,68 +41,9 @@ paths:
 
         '500':
           $ref: '#/components/responses/internalServerError'
-    
-    post:
-      description: crea una categoria con el objeto recibido
-      requestBody:
-          required: true
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/category'
-                
-      responses:
-        '200':
-          description: successfull response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/category'
 
-        '404':
-          $ref: '#/components/responses/notFound'
 
-        '400':
-          $ref: '#/components/responses/badRequest'
-
-        '401':
-          $ref: '#/components/responses/unauthorized'
-
-        '500':
-          $ref: '#/components/responses/internalServerError'
-    
-    put:
-      description: actualiza una categoria con el objeto recibido
-      requestBody:
-          required: true
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/category'
-                
-      responses:
-        '200':
-          description: successfull response
-          content:
-            application/json:
-              schema:
-                type: string
-                example: {"message": "successfully updated"}
-
-        '404':
-          $ref: '#/components/responses/notFound'
-
-        '400':
-          $ref: '#/components/responses/badRequest'
-
-        '401':
-          $ref: '#/components/responses/unauthorized'
-
-        '500':
-          $ref: '#/components/responses/internalServerError'
-    
-  
-  /Catalog/{categoryIdIn}:
+  /Categoria/{categoryIdIn}:
     get:
       description: muestra una categoria definida por el ID
       parameters:
@@ -119,7 +60,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/category'
+                $ref: '#/components/schemas/categoria'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -132,14 +73,39 @@ paths:
 
         '500':
           $ref: '#/components/responses/internalServerError'
-    
-    delete:
-      description: borra una categoria definida por el ID
+
+  /Empleo:
+    get:
+      description: muestra todos los Empleos
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/empleo'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+
+  /Empleo/{empleoIdIn}:
+    get:
+      description: muestra un empleo definido por el ID
       parameters:
         - in: path
-          name: categoryIdIn
+          name: empleoIdIn
           required: true
-          description: codigo de la categoria
+          description: codigo del empleo
           schema:
             type: integer
 
@@ -149,8 +115,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                example: {"message": "successfully deleted"}
+                $ref: '#/components/schemas/empleo'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -163,8 +128,61 @@ paths:
 
         '500':
           $ref: '#/components/responses/internalServerError'
-    
 
+  /Skill:
+    get:
+      description: muestra todos los skills
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+
+  /Skill/{skillIdIn}:
+    get:
+      description: muestra un Skill definido por el ID
+      parameters:
+        - in: path
+          name: skillIdIn
+          required: true
+          description: codigo del Skill
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
 
   /User:
     get:
@@ -228,7 +246,7 @@ paths:
 components:
 
   responses:
-  
+
     notFound:
       description: User not found
       content:
@@ -257,10 +275,10 @@ components:
           schema:
             type: string
             example: {"message": "unexpected error"}
-    
+
   schemas:
-  
-    category: 
+
+    categoria:
       type: object
       properties:
         categoryId:
@@ -283,29 +301,20 @@ components:
           type: string
           example: http://image.com
           description: a
-        empleoList:
-          type: array
-          items:
-            $ref: '#/components/schemas/empleo'
-          description: a
+
       required:
         - categoryId
         - name
         - version
         - description
         - imageurl
-        - empleoList
-        
-    empleo: 
+
+    empleo:
       type: object
       properties:
         empleoId:
           type: integer
           example: 2001
-          description: a
-        empleo2category:
-          type: integer
-          example: 1001
           description: a
         name:
           type: string
@@ -323,31 +332,20 @@ components:
           type: string
           example: http://image.com
           description: a
-        skillList:
-          type: array
-          items:
-            $ref: '#/components/schemas/skills'
-          description: a
       required:
         - empleoId
-        - empleo2category
         - name
         - description
         - version
         - imageurl
-        - skillList
 
 
-    skills: 
+    skill:
       type: object
       properties:
         skillId:
           type: integer
           example: 3001
-          description: a
-        skill2empleo:
-          type: integer
-          example: 2001
           description: a
         name:
           type: string
@@ -368,14 +366,13 @@ components:
 
       required:
         - skillId
-        - skill2empleo
         - name
         - description
         - version
         - imageurl
 
 
-  
+
     user:
       type: object
       properties:

@@ -1,5 +1,5 @@
 export * from './address';
-export * from './category';
+export * from './categoria';
 export * from './empleo';
-export * from './skills';
+export * from './skill';
 export * from './user';

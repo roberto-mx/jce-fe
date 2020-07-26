@@ -9,9 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Empleo } from './empleo';
 
-export interface Category { 
+export interface Categoria { 
     /**
      * a
      */
@@ -32,8 +31,4 @@ export interface Category {
      * a
      */
     imageurl: string;
-    /**
-     * a
-     */
-    empleoList: Array<Empleo>;
 }
