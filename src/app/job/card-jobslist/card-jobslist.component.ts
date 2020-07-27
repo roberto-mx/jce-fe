@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Empleo } from 'build/backend-api';
 
 @Component({
   selector: 'app-card-jobslist',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-jobslist.component.css']
 })
 export class CardJobslistComponent implements OnInit {
+
+  jobs: Empleo
 
   constructor() { }
 

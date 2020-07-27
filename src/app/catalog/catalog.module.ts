@@ -1,3 +1,4 @@
+import { JobModule } from './../job/job.module';
 import { CategoryModule } from './../category/category.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { UiImportsModule } from '../ui-imports/ui-imports.module';
     CommonModule,
     CatalogRoutingModule,
     UiImportsModule,
-    CategoryModule
+    CategoryModule,
+    JobModule
   ]
 })
 export class CatalogModule { }
