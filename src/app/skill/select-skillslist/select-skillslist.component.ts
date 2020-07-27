@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-skillslist.component.css']
 })
 export class SelectSkillslistComponent implements OnInit {
-
   constructor() { }
-
   ngOnInit(): void {
   }
-
 }

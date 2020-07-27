@@ -131,7 +131,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/empleo'
+                type: array
+                items:
+                  $ref: '#/components/schemas/empleo'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -145,7 +147,7 @@ paths:
         '500':
           $ref: '#/components/responses/internalServerError'        
 
-  /Skill:
+  /Skills:
     get:
       description: muestra todos los skills
       operationId: getSkills
@@ -207,6 +209,42 @@ paths:
 
         '500':
           $ref: '#/components/responses/internalServerError'
+
+  /Skills/{empleoId}:
+    get:
+      description: muestra una lista de Skills empleoId
+      operationId: getSkillByIdEmpleoId
+      tags:
+        - skill
+      parameters:
+        - in: path
+          name: empleoId
+          required: true
+          description: codigo del Skill by empleo
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'          
 
   /User:
     get:

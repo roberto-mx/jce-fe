@@ -9,7 +9,7 @@ import { Categoria, CategoryService } from 'build/backend-api';
 export class SelectCategorislistComponent implements OnInit {
 
   categories: Categoria[];
-  selectedCategoria: string;
+  selectedCategoria: number;
   
 
   constructor(private _CategoryService: CategoryService) { 

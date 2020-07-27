@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { User } from "backend-api";
-import { DefaultService } from 'backend-api';
+//import { DefaultService } from 'backend-api';
 //import { Category } from 'backend-api';
 
 
@@ -13,7 +13,7 @@ export class CatalogComponent implements OnInit {
 	
   //categories: Category;
 
-  constructor(private _defaultService: DefaultService) { }
+  constructor() { }
 
   ngOnInit(): void {
 		

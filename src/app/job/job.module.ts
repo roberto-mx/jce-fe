@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardJobslistComponent } from './card-jobslist/card-jobslist.component';
@@ -8,7 +9,8 @@ import { UiImportsModule } from '../ui-imports/ui-imports.module';
   declarations: [CardJobslistComponent],
   imports: [
     CommonModule,
-    UiImportsModule
+    UiImportsModule,
+    RouterModule
   ],
   exports: [
     CardJobslistComponent

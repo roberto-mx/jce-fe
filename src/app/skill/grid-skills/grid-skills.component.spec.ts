@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubcategoriesComponent } from './subcategories.component';
+import { GridSkillsComponent } from './grid-skills.component';
 
-describe('SubcategoriesComponent', () => {
-  let component: SubcategoriesComponent;
-  let fixture: ComponentFixture<SubcategoriesComponent>;
+describe('GridSkillsComponent', () => {
+  let component: GridSkillsComponent;
+  let fixture: ComponentFixture<GridSkillsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubcategoriesComponent ]
+      declarations: [ GridSkillsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubcategoriesComponent);
+    fixture = TestBed.createComponent(GridSkillsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -91,9 +91,9 @@ export class EmpleoService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getEmpleoByCategory(categoriaId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<Empleo>;
-    public getEmpleoByCategory(categoriaId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpResponse<Empleo>>;
-    public getEmpleoByCategory(categoriaId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpEvent<Empleo>>;
+    public getEmpleoByCategory(categoriaId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<Array<Empleo>>;
+    public getEmpleoByCategory(categoriaId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpResponse<Array<Empleo>>>;
+    public getEmpleoByCategory(categoriaId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpEvent<Array<Empleo>>>;
     public getEmpleoByCategory(categoriaId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json'}): Observable<any> {
         if (categoriaId === null || categoriaId === undefined) {
             throw new Error('Required parameter categoriaId was null or undefined when calling getEmpleoByCategory.');
@@ -119,7 +119,7 @@ export class EmpleoService {
             responseType = 'text';
         }
 
-        return this.httpClient.get<Empleo>(`${this.configuration.basePath}/Empleo/${encodeURIComponent(String(categoriaId))}`,
+        return this.httpClient.get<Array<Empleo>>(`${this.configuration.basePath}/Empleo/${encodeURIComponent(String(categoriaId))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,

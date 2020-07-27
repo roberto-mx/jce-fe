@@ -14,8 +14,7 @@ import { UiImportsModule } from '../ui-imports/ui-imports.module';
     CommonModule,
     CatalogRoutingModule,
     UiImportsModule,
-    CategoryModule,
-    JobModule
+    CategoryModule
   ]
 })
 export class CatalogModule { }

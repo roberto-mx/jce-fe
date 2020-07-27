@@ -131,6 +131,51 @@ export class SkillService {
     }
 
     /**
+     * muestra una lista de Skills empleoId
+     * @param empleoId codigo del Skill by empleo
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getSkillByIdEmpleoId(empleoId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<Array<Skill>>;
+    public getSkillByIdEmpleoId(empleoId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpResponse<Array<Skill>>>;
+    public getSkillByIdEmpleoId(empleoId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpEvent<Array<Skill>>>;
+    public getSkillByIdEmpleoId(empleoId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json'}): Observable<any> {
+        if (empleoId === null || empleoId === undefined) {
+            throw new Error('Required parameter empleoId was null or undefined when calling getSkillByIdEmpleoId.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.get<Array<Skill>>(`${this.configuration.basePath}/Skills/${encodeURIComponent(String(empleoId))}`,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * muestra todos los skills
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -160,7 +205,7 @@ export class SkillService {
             responseType = 'text';
         }
 
-        return this.httpClient.get<Array<Skill>>(`${this.configuration.basePath}/Skill`,
+        return this.httpClient.get<Array<Skill>>(`${this.configuration.basePath}/Skills`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,

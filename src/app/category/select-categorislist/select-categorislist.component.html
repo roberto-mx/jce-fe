@@ -1,10 +1,15 @@
 
-    <mat-form-field appearance="fill">
+    <h3>Empleos Formales</h3>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="fill"  class="imput" >
         <mat-label>Categorias Generales</mat-label>
         <mat-select [(ngModel)]="selectedCategoria" name="categoria">
-          <mat-option *ngFor="let categoria of categories" [value]="categoria.name">
+          <mat-option *ngFor="let categoria of categories" [value]="categoria.categoryId">
             {{categoria.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-    <p> Categoria Selecionada: {{selectedCategoria}} </p>
+      <mat-divider></mat-divider>  
+    <app-card-jobslist *ngIf="selectedCategoria" [selectedCategory]=selectedCategoria></app-card-jobslist>
+
+    
