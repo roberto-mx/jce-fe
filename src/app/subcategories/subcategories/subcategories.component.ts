@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DefaultService } from 'backend-api';
-import { Category } from 'backend-api';
+//import { Category } from 'backend-api';
 
 
 @Component({
@@ -10,16 +10,18 @@ import { Category } from 'backend-api';
 })
 export class SubcategoriesComponent implements OnInit {
 
-  categories: Category;
+  //categories: Category;
 
-  constructor(private _defaultService: DefaultService) { }
+  //constructor(private _defaultService: DefaultService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
 
-    this._defaultService.catalogGet().subscribe( data  => {
+    /*this._defaultService.catalogGet().subscribe( data  => {
       this.categories = data;
       console.log(this.categories);
-    });
+    });*/
   }
 
   

@@ -1,0 +1,10 @@
+
+    <mat-form-field appearance="fill">
+        <mat-label>Categorias Generales</mat-label>
+        <mat-select [(ngModel)]="selectedCategoria" name="categoria">
+          <mat-option *ngFor="let categoria of categories" [value]="categoria.name">
+            {{categoria.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <p> Categoria Selecionada: {{selectedCategoria}} </p>

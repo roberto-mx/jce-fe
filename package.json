@@ -2,8 +2,11 @@
   "name": "my-app",
   "version": "0.0.0",
   "scripts": {
+    "generate:api": " openapi-generator generate -g typescript-angular -o build/backend-api/ -i openapi.yaml",
     "ng": "ng",
-    "start": "ng serve",
+    "prestart": "npm run generate:api",
+    "start": "ng serve -o",
+    "prebuild": "npm run generate:api",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
