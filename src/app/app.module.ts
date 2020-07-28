@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiModule,Configuration } from 'build/backend-api';
+//import { SelectedProviderComponent } from './provider/selected-provider/selected-provider.component';
 
 
 
@@ -16,6 +17,7 @@ import { ApiModule,Configuration } from 'build/backend-api';
 @NgModule({
   declarations: [
     AppComponent
+    //,SelectedProviderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { ApiModule,Configuration } from 'build/backend-api';
 	FlexLayoutModule
   ],
   exports: [
-], 	
+],
   providers: [],
   bootstrap: [AppComponent]
 })
