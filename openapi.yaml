@@ -246,9 +246,61 @@ paths:
         '500':
           $ref: '#/components/responses/internalServerError'          
 
+
+  /Provider/{providerId}:
+    get:
+      description: muestra un proveedor
+      operationId: getProviderById
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: providerId
+          required: true
+          description: id del proveedor de servicios
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/provider'
+        '404':
+          $ref: '#/components/responses/notFound'
+        '400':
+          $ref: '#/components/responses/badRequest'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+  /Provider/{skillId}:
+    get:
+      description: Mostar todos los Proveedores de servicios de acuerdo a sus skills
+      operationId: getProvidersBySkillId
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: skillId
+          required: true
+          description: Id de Skill
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/provider'
+
+
   /User:
     get:
-      description: muestar toodos los usuarios
+      description: muesta todos los usuarios
       operationId: getUsers
       tags:
         - user
@@ -451,6 +503,38 @@ components:
         - description
         - version
         - imageurl
+
+
+
+    provider:
+      type: object
+      properties:
+        providerId:
+          type: integer
+          example: 3001
+          description: id
+        firstName:
+          type: string
+          example: Saturnino
+          description: nombre
+        lastName:
+          type: string
+          example: Herrán
+          description: apellido
+        age:
+          type: integer
+          example: 18
+          description: years old
+        gender:
+          type: string
+          example: m
+          description: Genero
+      required:
+        - providerId
+        - firstName
+        - lastName
+        - age
+        - gender
 
 
 
