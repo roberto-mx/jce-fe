@@ -10,20 +10,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./selected-provider.component.css']
 })
 export class SelectedProviderComponent implements OnInit {
-  provider : Provider;
+  objProvider : Provider;
 
   selectedProvider: any;
 
   constructor(private route: ActivatedRoute, private _providerService: ProviderService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(data => this.selectedProvider = data);
-    this._providerService.getProviderById(this.selectedProvider).subscribe(data => this.provider = data);
-  }
-
-  ngOnChanges() {
-    console.log(this.selectedProvider);
-    this._providerService.getProviderById(this.selectedProvider).subscribe(data => this.provider = data);
+    this.route.params.subscribe(data => this.selectedProvider = data.id);
+    this._providerService.getProviderById(this.selectedProvider).subscribe(data => this.objProvider = data);
   }
 
 }
