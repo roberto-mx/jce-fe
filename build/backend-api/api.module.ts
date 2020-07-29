@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { CategoryService } from './api/category.service';
 import { EmpleoService } from './api/empleo.service';
+import { ProviderService } from './api/provider.service';
 import { SkillService } from './api/skill.service';
 import { UserService } from './api/user.service';
 
