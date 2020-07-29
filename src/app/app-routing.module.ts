@@ -21,6 +21,10 @@ const routes: Routes = [
   {
 	  path : 'skill/:id',
 	  loadChildren: () => import('./skill/skill.module').then(m => m.SkillModule)
+  },
+  {
+	  path : 'provider/:1',
+	  loadChildren: () => import('./provider/provider.module').then(m => m.ProviderModule)
   }
 ];
 @NgModule({

@@ -1,0 +1,27 @@
+<h3>Proveedor</h3>
+<mat-divider></mat-divider>
+    <mat-card class="example-card" >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <!-- <mat-icon>  bookmark </mat-icon> -->
+          </div>
+          <mat-card-title>{{provider.firstName + "" + provider.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{provider.providerId}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <a mat-flat-button color="primary" routerLink="/provider/{{provider.providerId + 2}}">
+              Mensaje
+            </a>
+            <a mat-flat-button color="primary" routerLink="/provider/{{provider.providerId + 1}}">
+              Llamar
+          </a>
+        </mat-card-actions>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p>
+            edad: {{provider.age}} <br>
+            Género: {{provider.gender}}<br>
+            mas descripcion ...
+          </p>
+        </mat-card-content>
+      </mat-card>
