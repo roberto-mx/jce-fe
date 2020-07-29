@@ -1,18 +1,14 @@
-/*.contenedor {
-    margin: 20px;
+.contenedor {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: center;
 }
 
 .example-card {
-    min-width: 30%;
-    width: 40%;
-    margin: 20px;
+    margin: 10px;
     border-radius: 20px;
     box-shadow: 0 0 15px 0 lightgray;
-}*/
+}
 
 .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -56,7 +52,8 @@
 
 section {
     display: table;
-  }
+}
+
 .mat-button-base {
     margin: 8px 8px 8px 0;
-  }  
+}
