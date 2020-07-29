@@ -276,7 +276,7 @@ paths:
         '500':
           $ref: '#/components/responses/internalServerError'
 
-  /Provider/{skillId}:
+  /Provider/skill/{skillId}:
     get:
       description: Mostar todos los Proveedores de servicios de acuerdo a sus skills
       operationId: getProvidersBySkillId
@@ -294,8 +294,10 @@ paths:
           description: successful response
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/provider'
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/provider'
 
 
   /User:
