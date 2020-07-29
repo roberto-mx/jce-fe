@@ -1,19 +1,23 @@
-<h1 class="titulo">Provedores del servicio seleccionado</h1>
+<h3>Provedores del servicio seleccionado</h3>
+
 
 <div class="contenedor">
     <mat-card class="example-card mat-elevation-z0" *ngFor="let provider of providers">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <span class="precio">$44.00/hr</span>
-            <mat-card-title>{{providers.firstName + "" + providers.lastName}}</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <mat-card-title>{{provider.firstName + "" + provider.lastName}}</mat-card-title>
+
         </mat-card-header>
         <hr>
         <mat-card-actions>
             <mat-icon class="icon">location_on</mat-icon>
-            <span class="label1">Distance</span>
+            <span class="label">Distance</span>
             <mat-icon class="icon">thumb_up_alt</mat-icon>
-            <span class="label2">Reviews</span>
+            <span class="label">Reviews</span>
+            <a mat-flat-button color="primary" routerLink="/provider/{{provider.providerId}}">
+                Ver Provedores
+            </a>
         </mat-card-actions>
     </mat-card>
 

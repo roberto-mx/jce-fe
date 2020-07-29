@@ -19,11 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('./user-view/user-view.module').then(m => m.UserViewModule)
   },
   {
-	  path : 'skill/:id',
+	  path : 'skill',
 	  loadChildren: () => import('./skill/skill.module').then(m => m.SkillModule)
   },
   {
-	  path : 'provider/:1',
+	  path : 'provider',
 	  loadChildren: () => import('./provider/provider.module').then(m => m.ProviderModule)
   }
 ];
