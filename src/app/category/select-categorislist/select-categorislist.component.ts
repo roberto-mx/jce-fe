@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria, CategoryService } from 'build/backend-api';
+import { Categoria, CategoryService, Skill } from 'build/backend-api';
 
 @Component({
   selector: 'app-select-categorislist',
@@ -10,6 +10,7 @@ export class SelectCategorislistComponent implements OnInit {
 
   categories: Categoria[];
   selectedCategoria: number;
+  skill: Skill
   
 
   constructor(private _CategoryService: CategoryService) { 
