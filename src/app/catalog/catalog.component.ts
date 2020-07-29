@@ -4,6 +4,7 @@ import { DefaultService } from 'backend-api';
 import { Category } from 'backend-api';
 
 
+
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',

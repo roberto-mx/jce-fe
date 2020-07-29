@@ -1,0 +1,30 @@
+h1 {
+    color: #ca0088;
+    
+}
+div{
+    margin: 5px;
+    padding: 5px;
+    border-width: 1;
+    border-style: none;
+    border-color: #eab330;
+    font-size: 15px;
+}
+input {
+    color: #ca0088;
+    
+}
+mat-list {
+    align-self: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    float: inline-start;
+}
+mat-nav-list{
+    text-align: center;
+    align-content: center;
+    background-color: cornsilk;
+    align-items: center;
+    justify-items: center;
+    scrollbar-color: #ca0088;
+    
+}

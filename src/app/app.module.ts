@@ -9,13 +9,16 @@ import { ApiModule, Configuration} from 'backend-api';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SelectServiceModule } from './layout/select-service/select-service.module';
+
+
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     UserViewModule,
     LayoutModule,
-	HttpClientModule,
+  HttpClientModule,
+  SelectServiceModule,
 	ApiModule.forRoot(() => {
       return new Configuration({
         basePath: `http://127.0.0.1:4010`,

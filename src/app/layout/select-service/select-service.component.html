@@ -1,0 +1,38 @@
+<h1 align="center"> Listado de Servicios</h1>
+
+<div align="center" class="container">	
+	<div class="row">
+		<div class="col">
+			<div class="form-group">
+				<input type="text" class="form-group" name="filterServ" placeholder="Buscar..." [(ngModel)]= 'filterServ'>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Service Name</th>
+						<th hidden>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let service of servicios | filter:filterServ  ">
+						<td>{{service.nom}}</td>
+						<th hidden>{{service.categ}}</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>			
+</div>
+<br>
+
+<mat-nav-list align="center">
+	<a mat-list-item href="..." *ngFor="let service of servicios; let i=index"> {{service.nom}} </a>
+</mat-nav-list>
+<br>
+<mat-list dense>
+	<mat-list-item *ngFor="let service of servicios; let i=index" >  {{service.nom}} </mat-list-item>	
+</mat-list>
