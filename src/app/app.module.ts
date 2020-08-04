@@ -5,23 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserViewModule } from './user-view/user-view.module';
 import { LayoutModule } from './layout/layout.module';
-import { ApiModule, Configuration} from 'backend-api';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ApiModule,Configuration } from 'build/backend-api';
+//import { SelectedProviderComponent } from './provider/selected-provider/selected-provider.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent
+    //,SelectedProviderComponent
   ],
   imports: [
     BrowserModule,
-	BrowserAnimationsModule,
+	  BrowserAnimationsModule,
     AppRoutingModule,
     UserViewModule,
     LayoutModule,
-	HttpClientModule,
-	ApiModule.forRoot(() => {
+	  HttpClientModule,
+	  ApiModule.forRoot(() => {
       return new Configuration({
         basePath: `http://127.0.0.1:4010`,
       });
@@ -29,6 +34,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 	BrowserAnimationsModule,
 	FlexLayoutModule
   ],
+  exports: [
+],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,5 @@
+@import '../../theme/index.css';
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   height: 100%;
 }

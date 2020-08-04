@@ -1,0 +1,609 @@
+openapi: 3.0.0
+info:
+  title: Jalisco con empleo API
+  description: Aplicacion creada para conectar proovedores con clientes en Jalisco
+  termsOfService: http://www.jaliscoconempleo.com/ToS
+  contact:
+    name: Amdocs
+    url: "http://www.amdocs.com"
+    email: soporte@amdocs.com
+  license:
+    name: Apache 2.0
+    url: http://apache.com
+  version: 1.0.0
+
+servers:
+  - url: http://127.0.0.1:4010
+    description: Prod Server
+  - url: http://127.0.0.1:4010
+    description: Development server
+
+paths:
+  /Categoria:
+    get:
+      description: muestra todas las categorias en el catalogo de servicios
+      operationId: getCategories
+      tags:
+        - category
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/categoria'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+
+  /Categoria/{categoryIdIn}:
+    get:
+      description: muestra una categoria definida por el ID
+      operationId: getCategoryById
+      tags:
+        - category
+      parameters:
+        - in: path
+          name: categoryIdIn
+          required: true
+          description: codigo de la categoria
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoria'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+  /Empleo:
+    get:
+      description: muestra todos los Empleos
+      operationId: getEmpleos
+      tags:
+        - empleo
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/empleo'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+
+  /Empleo/{categoriaId}:
+    get:
+      description: muestra un empleo definido por el ID categoria
+      operationId: getEmpleoByCategory
+      tags:
+        - empleo
+      parameters:
+        - in: path
+          name: categoriaId
+          required: true
+          description: codigo del empleo
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/empleo'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'        
+
+  /Skills:
+    get:
+      description: muestra todos los skills
+      operationId: getSkills
+      tags:
+        - skill
+      responses:
+        '200':
+          description: successfull response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+
+  /Skill/{skillIdIn}:
+    get:
+      description: muestra un Skill definido por el ID
+      operationId: getSkillById
+      tags:
+        - skill
+      parameters:
+        - in: path
+          name: skillIdIn
+          required: true
+          description: codigo del Skill
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+  /Skills/{empleoId}:
+    get:
+      description: muestra una lista de Skills empleoId
+      operationId: getSkillByIdEmpleoId
+      tags:
+        - skill
+      parameters:
+        - in: path
+          name: empleoId
+          required: true
+          description: codigo del Skill by empleo
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'          
+
+
+  /Provider/{providerId}:
+    get:
+      description: muestra un proveedor
+      operationId: getProviderById
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: providerId
+          required: true
+          description: id del proveedor de servicios
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/provider'
+        '404':
+          $ref: '#/components/responses/notFound'
+        '400':
+          $ref: '#/components/responses/badRequest'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+  /Provider/skill/{skillId}:
+    get:
+      description: Mostar todos los Proveedores de servicios de acuerdo a sus skills
+      operationId: getProvidersBySkillId
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: skillId
+          required: true
+          description: Id de Skill
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/provider'
+
+
+  /User:
+    get:
+      description: muesta todos los usuarios
+      operationId: getUsers
+      tags:
+        - user
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+    post:
+      description: crea un usuario
+      operationId: saveUser
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: {"message":"successfully created"}
+
+  /User/{UniqueIdentifier}:
+    get:
+      description: muestre un Usuario definido por el ID
+      operationId: getUserById
+      tags:
+        - user
+      parameters:
+        - in: path
+          name: UniqueIdentifier
+          required: true
+          description: codigo del usuario
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+components:
+
+  responses:
+
+    notFound:
+      description: User not found
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "Error 404, page not found."}
+    badRequest:
+      description: BAD_REQUEST
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "BAD_REQUEST"}
+    unauthorized:
+      description: UNAUTHORIZED
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "Unauthorized"}
+    internalServerError:
+      description: INTERNAL_SERVER_ERROR
+      content:
+        application/json:
+          schema:
+            type: string
+            example: {"message": "unexpected error"}
+
+  schemas:
+
+    categoria:
+      type: object
+      properties:
+        categoryId:
+          type: integer
+          example: 1001
+          description: a
+        name:
+          type: string
+          example: Oficios Generales
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        description:
+          type: string
+          example: General Official
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+        empleos:
+          type: array
+          items:
+            $ref: '#/components/schemas/empleo'  
+
+      required:
+        - categoryId
+        - name
+        - version
+        - description
+        - imageurl
+
+    empleo:
+      type: object
+      properties:
+        empleoId:
+          type: integer
+          example: 2001
+          description: a
+        category:
+          $ref: '#/components/schemas/categoria'  
+        name:
+          type: string
+          example: Carpinteros
+          description: a
+        description:
+          type: string
+          example: Carpenter
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+        skills: 
+          type: array
+          items:
+           $ref: '#/components/schemas/skill'   
+      required:
+        - empleoId
+        - name
+        - description
+        - version
+        - imageurl
+
+
+    skill:
+      type: object
+      properties:
+        skillId:
+          type: integer
+          example: 3001
+          description: a
+        name:
+          type: string
+          example: Diversos
+          description: a
+        description:
+          type: string
+          example: Miscellaneous
+          description: a
+        version:
+          type: string
+          example: 1
+          description: a
+        imageurl:
+          type: string
+          example: http://image.com
+          description: a
+
+      required:
+        - skillId
+        - name
+        - description
+        - version
+        - imageurl
+
+
+
+    provider:
+      type: object
+      properties:
+        providerId:
+          type: integer
+          example: 3001
+          description: id
+        firstName:
+          type: string
+          example: Saturnino
+          description: nombre
+        lastName:
+          type: string
+          example: Herrán
+          description: apellido
+        age:
+          type: integer
+          example: 18
+          description: years old
+        gender:
+          type: string
+          example: m
+          description: Genero
+      required:
+        - providerId
+        - firstName
+        - lastName
+        - age
+        - gender
+
+
+
+    user:
+      type: object
+      properties:
+        FirstName:
+          type: string
+          example: Luis
+          description: First Name of the User
+        LastName:
+          type: string
+          example: Briseno
+          description: Last Name of the User
+        MiddleName:
+          type: string
+          example: Guillermo
+          description: Middle Name of the User
+        UserType:
+          type: string
+          example: Requester-Provider
+          description: Requester/Provider
+        PhoneNumber:
+          type: string
+          example: 3333333333
+          description: 10 digit Phone Number of the user
+        CountryCode:
+          type: string
+          example: +52
+          description: CountryCode of the user, Default Value +52
+        Address:
+          type: object
+          $ref: '#/components/schemas/address'
+          description: Mandatory for UserType:-Requester
+      required:
+        - FirstName
+        - LastName
+        - UserType
+        - PhoneNumber
+
+    address:
+      type: object
+      properties:
+        AddressLine1:
+          type: string
+          example: Luis
+          description: Suite/Apartment, Outer Number, Street
+        Colony:
+          type: string
+          example: 7, 1234 , calle esperanza
+          description: Colony or Neighborhood
+        Muncipality:
+          type: string
+          example: La Estancia
+          description: Muncipality
+        Zipcode:
+          type: string
+          example: 12345
+          description: Zipcode
+        State:
+          type: string
+          example: Jalisco
+          description: State
+      required:
+        - AddressLine1
+        - Colony
+        - Muncipality
+        - Zipcode
+        - State
+

@@ -1,0 +1,28 @@
+<div class="contenedor">
+    <h3>Provedores del servicio <span *ngIf="objSkill" >{{objSkill.name}}</span></h3>
+    <mat-card class="example-card mat-elevation-z0" *ngFor="let provider of providers">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <span class="precio">$44.00/hr</span>
+            <mat-card-title>{{provider.firstName + "" + provider.lastName}}</mat-card-title>
+
+        </mat-card-header>
+        <hr>
+        <mat-card-actions>
+            <section>
+                <button mat-flat-button color="accent">
+                    <mat-icon class="icon">location_on</mat-icon>
+                    Distance
+                </button>    
+                <button mat-flat-button color="accent">
+                    <mat-icon class="icon">thumb_up_alt</mat-icon>
+                    Reviews
+                </button>
+                <a mat-flat-button color="primary" routerLink="/provider/{{provider.providerId}}">
+                    Ver
+                </a>
+            </section>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

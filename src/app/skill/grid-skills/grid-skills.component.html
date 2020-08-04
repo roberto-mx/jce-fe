@@ -1,0 +1,23 @@
+<h3>Especialidades</h3>
+<mat-divider></mat-divider>
+<mat-card class="example-card" *ngFor="let objSkill of skills">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+            <mat-icon>
+                bookmark
+            </mat-icon>
+        </div>
+        <mat-card-title>{{objSkill.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            {{objSkill.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-flat-button color="primary" routerLink="/provider/skill/{{objSkill.skillId}}">
+                Ver Provedores
+            </a>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+</mat-card>
