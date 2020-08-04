@@ -2,8 +2,9 @@
   "name": "jce-fe",
   "version": "0.0.1",
   "engines": {
-    "npm": "~12.17.0",
-    "engineStrict": "true"
+    "npm": "6.14.4",
+    "engineStrict": "true",
+    "node": "12.x"
   },
   "scripts": {
     "generate:api": " openapi-generator generate -g typescript-angular -o build/backend-api/ -i openapi.yaml",
