@@ -31,7 +31,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install
 
-# mock server
+# mock server up (dev only)
 COPY openapi.yaml /app/openapi.yaml
 RUN npm run generate:api
 COPY build/backend-api /app/build/backend-api
