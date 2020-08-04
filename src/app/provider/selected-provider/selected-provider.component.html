@@ -1,0 +1,25 @@
+   <mat-card class="example-card" *ngIf="objProvider" >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <!-- <mat-icon>  bookmark </mat-icon> -->
+          </div>
+          <mat-card-title>{{objProvider.firstName + "" + objProvider.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{objProvider.providerId}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <a mat-flat-button color="primary" routerLink="/provider/{{objProvider.providerId + 2}}">
+              Mensaje
+            </a>
+            <a mat-flat-button color="primary" routerLink="/provider/{{objProvider.providerId + 1}}">
+              Llamar
+          </a>
+        </mat-card-actions>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p>
+            edad: {{objProvider.age}} <br>
+            Género: {{objProvider.gender}}<br>
+            mas descripcion ...
+          </p>
+        </mat-card-content>
+      </mat-card>

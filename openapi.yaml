@@ -22,13 +22,18 @@ paths:
   /Categoria:
     get:
       description: muestra todas las categorias en el catalogo de servicios
+      operationId: getCategories
+      tags:
+        - category
       responses:
         '200':
           description: successfull response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoria'
+                type: array
+                items:
+                  $ref: '#/components/schemas/categoria'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -46,6 +51,9 @@ paths:
   /Categoria/{categoryIdIn}:
     get:
       description: muestra una categoria definida por el ID
+      operationId: getCategoryById
+      tags:
+        - category
       parameters:
         - in: path
           name: categoryIdIn
@@ -77,13 +85,18 @@ paths:
   /Empleo:
     get:
       description: muestra todos los Empleos
+      operationId: getEmpleos
+      tags:
+        - empleo
       responses:
         '200':
           description: successfull response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/empleo'
+                type: array
+                items:
+                  $ref: '#/components/schemas/empleo'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -98,12 +111,15 @@ paths:
           $ref: '#/components/responses/internalServerError'
 
 
-  /Empleo/{empleoIdIn}:
+  /Empleo/{categoriaId}:
     get:
-      description: muestra un empleo definido por el ID
+      description: muestra un empleo definido por el ID categoria
+      operationId: getEmpleoByCategory
+      tags:
+        - empleo
       parameters:
         - in: path
-          name: empleoIdIn
+          name: categoriaId
           required: true
           description: codigo del empleo
           schema:
@@ -115,7 +131,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/empleo'
+                type: array
+                items:
+                  $ref: '#/components/schemas/empleo'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -127,18 +145,23 @@ paths:
           $ref: '#/components/responses/unauthorized'
 
         '500':
-          $ref: '#/components/responses/internalServerError'
+          $ref: '#/components/responses/internalServerError'        
 
-  /Skill:
+  /Skills:
     get:
       description: muestra todos los skills
+      operationId: getSkills
+      tags:
+        - skill
       responses:
         '200':
           description: successfull response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/skill'
+                type: array
+                items:
+                  $ref: '#/components/schemas/skill'
 
         '404':
           $ref: '#/components/responses/notFound'
@@ -156,6 +179,9 @@ paths:
   /Skill/{skillIdIn}:
     get:
       description: muestra un Skill definido por el ID
+      operationId: getSkillById
+      tags:
+        - skill
       parameters:
         - in: path
           name: skillIdIn
@@ -184,9 +210,102 @@ paths:
         '500':
           $ref: '#/components/responses/internalServerError'
 
+  /Skills/{empleoId}:
+    get:
+      description: muestra una lista de Skills empleoId
+      operationId: getSkillByIdEmpleoId
+      tags:
+        - skill
+      parameters:
+        - in: path
+          name: empleoId
+          required: true
+          description: codigo del Skill by empleo
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/skill'
+
+        '404':
+          $ref: '#/components/responses/notFound'
+
+        '400':
+          $ref: '#/components/responses/badRequest'
+
+        '401':
+          $ref: '#/components/responses/unauthorized'
+
+        '500':
+          $ref: '#/components/responses/internalServerError'          
+
+
+  /Provider/{providerId}:
+    get:
+      description: muestra un proveedor
+      operationId: getProviderById
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: providerId
+          required: true
+          description: id del proveedor de servicios
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/provider'
+        '404':
+          $ref: '#/components/responses/notFound'
+        '400':
+          $ref: '#/components/responses/badRequest'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+
+  /Provider/skill/{skillId}:
+    get:
+      description: Mostar todos los Proveedores de servicios de acuerdo a sus skills
+      operationId: getProvidersBySkillId
+      tags:
+        - provider
+      parameters:
+        - in: path
+          name: skillId
+          required: true
+          description: Id de Skill
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/provider'
+
+
   /User:
     get:
-      description: muestar toodos los usuarios
+      description: muesta todos los usuarios
+      operationId: getUsers
+      tags:
+        - user
       responses:
         200:
           description: successful response
@@ -197,6 +316,9 @@ paths:
 
     post:
       description: crea un usuario
+      operationId: saveUser
+      tags:
+        - user
       requestBody:
         required: true
         content:
@@ -215,6 +337,9 @@ paths:
   /User/{UniqueIdentifier}:
     get:
       description: muestre un Usuario definido por el ID
+      operationId: getUserById
+      tags:
+        - user
       parameters:
         - in: path
           name: UniqueIdentifier
@@ -301,6 +426,10 @@ components:
           type: string
           example: http://image.com
           description: a
+        empleos:
+          type: array
+          items:
+            $ref: '#/components/schemas/empleo'  
 
       required:
         - categoryId
@@ -316,6 +445,8 @@ components:
           type: integer
           example: 2001
           description: a
+        category:
+          $ref: '#/components/schemas/categoria'  
         name:
           type: string
           example: Carpinteros
@@ -332,6 +463,10 @@ components:
           type: string
           example: http://image.com
           description: a
+        skills: 
+          type: array
+          items:
+           $ref: '#/components/schemas/skill'   
       required:
         - empleoId
         - name
@@ -370,6 +505,38 @@ components:
         - description
         - version
         - imageurl
+
+
+
+    provider:
+      type: object
+      properties:
+        providerId:
+          type: integer
+          example: 3001
+          description: id
+        firstName:
+          type: string
+          example: Saturnino
+          description: nombre
+        lastName:
+          type: string
+          example: Herrán
+          description: apellido
+        age:
+          type: integer
+          example: 18
+          description: years old
+        gender:
+          type: string
+          example: m
+          description: Genero
+      required:
+        - providerId
+        - firstName
+        - lastName
+        - age
+        - gender
 
 
 
