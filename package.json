@@ -12,8 +12,7 @@
     "ng": "ng",
     "dev": "npm run mock & ng serve --host 0.0.0.0",
     "start": "ng serve --host 0.0.0.0",
-    "prebuild":"npm run generate:api",
-    "build": "npm run generate:api & ng build",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
