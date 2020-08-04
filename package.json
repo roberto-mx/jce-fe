@@ -1,6 +1,10 @@
 {
-  "name": "jcefe",
-  "version": ">=0.12",
+  "name": "jce-fe",
+  "version": "0.0.1",
+  "engines": {
+    "npm": "~12.17.0",
+    "engineStrict": "true"
+  },
   "scripts": {
     "generate:api": " openapi-generator generate -g typescript-angular -o build/backend-api/ -i openapi.yaml",
     "mock": "prism mock -d ./openapi.yaml -h 0.0.0.0 ",
