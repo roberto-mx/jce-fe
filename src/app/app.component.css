@@ -41,3 +41,10 @@ a:active {
   margin: 0;
   width: 85%;
 }
+
+.JcEicon {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  float: right;
+}
