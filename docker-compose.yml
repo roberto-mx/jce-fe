@@ -1,0 +1,5 @@
+version: 0.1
+services:
+    web:
+        build: .
+        ports: 4200:8080
