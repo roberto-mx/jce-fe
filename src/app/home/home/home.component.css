@@ -1,9 +1,18 @@
-.buscarServicioButton{
-  background-image: url("/assets/img/pexels-andrea-piacquadio-3823488.jpg");
-  background-size: cover;
+.buscarServicioButton {
+    background-image: url("/assets/img/pexels-andrea-piacquadio-3823488.jpg");
+    background-size: cover;
 }
 
-.publicarServicioButton{
-  background-image: url("/assets/img/pexels-anthony-shkraba-4348403.jpg");
-  background-size: cover;
+.publicarServicioButton {
+    background-image: url("/assets/img/pexels-anthony-shkraba-4348403.jpg");
+    background-size: cover;
+}
+
+.mat-flat-button.mat-primary {
+    background-color: #D5665F;
+}
+
+.mat-flat-button.mat-accent {
+    background-color: #EAB330;
+    color: white;
 }
