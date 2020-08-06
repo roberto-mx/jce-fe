@@ -45,6 +45,7 @@ a:active {
 .JcEicon {
   width: 100%;
   max-width: 100px;
+  min-width: 50px;
   height: auto;
   float: right;
 }
