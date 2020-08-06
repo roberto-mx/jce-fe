@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 })
 export class ProviderService {
 
-    protected basePath = 'http://127.0.0.1:4010';
+    protected basePath = 'https://jce-api.herokuapp.com';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;

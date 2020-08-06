@@ -13,9 +13,9 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://127.0.0.1:4010
+  - url: https://jce-api.herokuapp.com
     description: Prod Server
-  - url: http://127.0.0.1:4010
+  - url: https://jce-api.herokuapp.com
     description: Development server
 
 paths:

@@ -17,7 +17,6 @@ import { ApiModule,Configuration } from 'build/backend-api';
 @NgModule({
   declarations: [
     AppComponent
-    //,SelectedProviderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +27,7 @@ import { ApiModule,Configuration } from 'build/backend-api';
 	  HttpClientModule,
 	  ApiModule.forRoot(() => {
       return new Configuration({
-        basePath: `http://127.0.0.1:4010`,
+        basePath: `https://jce-api.herokuapp.com`,
       });
     }),
 	BrowserAnimationsModule,
