@@ -46,7 +46,7 @@
     height: 20%;
     top: 0;
     right: 0;
-    background-color: rgb(7, 7, 92);
+    background-color: #D5665F;
     font-size: calc(0.5em + 0.5vw);
 }
 
@@ -56,4 +56,12 @@ section {
 
 .mat-button-base {
     margin: 8px 8px 8px 0;
+}
+
+.mat-flat-button.mat-primary {
+    background-color: #57ef44;
+}
+
+.mat-flat-button.mat-warn {
+    background-color: #CA0088;
 }
