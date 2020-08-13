@@ -8,13 +8,16 @@ import { CatalogComponent } from './catalog.component';
 
 import { UiImportsModule } from '../ui-imports/ui-imports.module';
 
+import { IonicModule } from '@ionic/angular';
+
 @NgModule({
   declarations: [CatalogComponent],
   imports: [
     CommonModule,
     CatalogRoutingModule,
     UiImportsModule,
-    CategoryModule
+    CategoryModule,
+    IonicModule
   ]
 })
 export class CatalogModule { }

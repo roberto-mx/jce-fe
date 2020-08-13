@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { UiImportsModule } from '../ui-imports/ui-imports.module';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -11,7 +12,8 @@ import { UiImportsModule } from '../ui-imports/ui-imports.module';
   imports: [
     CommonModule,
     UiImportsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    IonicModule
   ]
 })
 export class HomeModule { }
