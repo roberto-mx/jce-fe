@@ -17,8 +17,8 @@ export class ProviderlistComponent implements OnInit {
 
   ngOnInit(): void {
    this._activatedRoute.params.subscribe(data => this.selectedSkill = data.id);
-  this._skillService.getSkillById(this.selectedSkill).subscribe(data => this.objSkill = data),
-   this._providerService.getProvidersBySkillId(this.selectedSkill).subscribe(data => this.providers = data);
+  this._skillService.getSkillById(this.selectedSkill).subscribe(data => this.objSkill = data);
+   //this._providerService.getProvidersBySkillId(this.selectedSkill).subscribe(data => this.providers = data);
   }
 
 }
