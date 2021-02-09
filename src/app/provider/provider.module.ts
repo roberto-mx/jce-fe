@@ -4,12 +4,13 @@ import { SelectedProviderComponent } from './selected-provider/selected-provider
 import { UiImportsModule } from '../ui-imports/ui-imports.module';
 import { ProviderRoutingModule } from './provider-routing.module';
 import { ProviderlistComponent } from './provider-list/provider-list.component';
+import { ProviderComponent } from './provider.component';
 
 
 
 
 @NgModule({
-  declarations: [SelectedProviderComponent, ProviderlistComponent],
+  declarations: [SelectedProviderComponent, ProviderlistComponent, ProviderComponent],
   imports: [
     CommonModule,
     ProviderRoutingModule,
